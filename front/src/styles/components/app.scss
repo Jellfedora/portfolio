@@ -1,0 +1,24 @@
+.app {
+
+    width: 100%;
+
+
+    &__component {
+        min-height: 100vh;
+        display: flex;
+        // background-image: url("https://media.giphy.com/media/xT9IgN8YKRhByRBzMI/source.gif");
+        // background-repeat: no-repeat;
+        // background-size: cover;
+        // background-position: center;
+        background-color: $color-dark;
+    }
+}
+
+#video {
+    // position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: 1;
+}

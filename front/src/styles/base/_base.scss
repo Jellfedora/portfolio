@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css?family=Orbitron:400,700&display=swap');
+
+@font-face {
+    font-family: "Roman";
+    src: url("../../ressources/fonts/roman_sd/Roman\ SD.ttf") format("truetype");
+}
+
+body {
+    font-family: 'Orbitron', sans-serif;
+    // font-family: 'Roman', sans-serif;
+}
+
+h1 {
+    font-weight: bold;
+    text-transform: uppercase;
+    color: $color-yellow;
+    font-size: 2.5em;
+    margin-bottom: 1em;
+    letter-spacing: .15em;
+    line-height: 1.2;
+}
+
+h2 {
+    letter-spacing: .15em;
+    color: $color-yellow;
+    font-size: 1.2em;
+    line-height: 1.5;
+}
+
+p {
+    text-transform: uppercase;
+    letter-spacing: .15em;
+    font-size: 0.7em;
+    line-height: 2;
+}
+
+a {
+    text-decoration: none;
+    text-transform: uppercase;
+}

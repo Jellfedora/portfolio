@@ -1,0 +1,188 @@
+.navigation {
+    width: 0;
+
+    &__left {
+        z-index: 200;
+        position: fixed;
+        left: 0;
+        width: 2em;
+        height: 0vh;
+        bottom: -5em;
+        // border-right: 1px solid $color-yellow;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: space-around;
+        background-color: transparent;
+
+
+
+        &__links {
+            // margin: 1em auto;
+            text-align: center;
+            // margin-bottom: 2.5em;
+            width: 100%;
+
+            &__link {
+                // height: 0.5em;
+                color: $color-yellow;
+                padding: 0.2em;
+                // border: 1px solid $color-dark;
+                border-radius: 50px;
+                -moz-transition-duration: 0.5s;
+                -moz-transition-timing-function: ease;
+                -webkit-transition-duration: 0.5s;
+                -webkit-transition-timing-function: ease;
+                transition-duration: 0.5s;
+                transition-timing-function: ease;
+                cursor: pointer;
+
+                &__labeltest {
+                    font-size: 0.7em;
+                    position: relative;
+                    bottom: 1.5em;
+                    right: 4em;
+                }
+            }
+
+            &__link:hover {
+                box-shadow: 0px 0px 10px $color-yellow;
+                -webkit-animation-name: clignote; //on affecte l'animation clignote à notre bouton
+                -webkit-animation-duration: 2s; //on définit la durée de l'animation à 1s
+                -webkit-animation-iteration-count: 2; //on dit que l'animation se répétera à l'infini.
+            }
+
+            &__label {
+                font-size: 0.7em;
+                color: $color-yellow;
+                position: relative;
+                right: 6em;
+                bottom: 1.6em;
+            }
+
+
+        }
+
+        &__icon {
+            // color: $color-yellow;
+            // margin-bottom: 2em;
+            // padding: 0.2em;
+        }
+    }
+
+    &__right {
+        z-index: 200;
+        position: fixed;
+        right: 0;
+        width: 2em;
+        height: 0vh;
+        top: -11em;
+        background-color: transparent;
+
+        // test
+        display: flex;
+        flex-wrap: wrap;
+        align-content: space-around;
+        justify-content: center;
+
+        &__links {
+            margin-top: 2.5em;
+            text-align: center;
+
+            &__link {
+                color: $color-yellow;
+                padding: 0.2em;
+                // border: 1px solid $color-dark;
+                border-radius: 50px;
+                -moz-transition-duration: 0.5s;
+                -moz-transition-timing-function: ease;
+                -webkit-transition-duration: 0.5s;
+                -webkit-transition-timing-function: ease;
+                transition-duration: 0.5s;
+                transition-timing-function: ease;
+                cursor: pointer;
+                width: 100%;
+            }
+
+            &__label {
+                font-size: 0.7em;
+                color: $color-yellow;
+                position: relative;
+                left: 4.5em;
+                bottom: 1.5em;
+                -moz-transition-duration: 1.5s;
+                -moz-transition-timing-function: ease;
+                -webkit-transition-duration: 1.5s;
+                -webkit-transition-timing-function: ease;
+                transition-duration: 1.5s;
+                transition-timing-function: ease;
+            }
+        }
+
+    }
+
+    &__left,
+    &__right {
+        -moz-transition-duration: 1.5s;
+        -moz-transition-timing-function: ease;
+        -webkit-transition-duration: 1.5s;
+        -webkit-transition-timing-function: ease;
+        transition-duration: 1.5s;
+        transition-timing-function: ease;
+    }
+
+    &__step-one {
+        margin-top: 1em;
+    }
+
+    &__show-button {
+        position: fixed;
+        right: 0.5em;
+        bottom: 0.5em;
+        color: $color-yellow;
+        background: $color-dark;
+        border-radius: 50px;
+        height: 2.5em;
+        width: 2.5em;
+        border: 2px solid $color-yellow;
+        -moz-transition-duration: 0.5s;
+        -moz-transition-timing-function: ease;
+        -webkit-transition-duration: 0.5s;
+        -webkit-transition-timing-function: ease;
+        transition-duration: 0.5s;
+        transition-timing-function: ease;
+    }
+
+    &__show-button:focus {
+        outline: 0 !important;
+        // border: 4px solid $color-yellow;
+    }
+}
+
+.chargeBorderLeft {
+    height: 50vh;
+    bottom: 0;
+}
+
+.chargeBorderRight {
+    height: 50vh;
+    top: 0;
+}
+
+.showRightLabels {
+    padding-right: 4.5em;
+    background-color: $color-dark;
+    border-left: 1px solid $color-yellow;
+}
+
+.showLeftLabels {
+    padding-left: 4.5em;
+    background-color: $color-dark;
+    border-right: 1px solid $color-yellow;
+    border-top: 1px solid $color-yellow;
+}
+
+
+
+.buttonIsNotFocus {
+    border: 2px solid $color-yellow;
+}

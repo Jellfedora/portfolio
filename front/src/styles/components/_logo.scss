@@ -1,0 +1,42 @@
+.logo {
+    position: fixed;
+    cursor: pointer;
+
+    &__title {
+        color: $color-yellow;
+        position: fixed;
+        top: 0.6em;
+        left: 0.6em;
+        font-weight: bold;
+        font-size: 1em;
+
+        // Rotate onClick
+        -moz-transition-duration: 0.7s;
+        -moz-transition-timing-function: ease;
+        -webkit-transition-duration: 0.7s;
+        -webkit-transition-timing-function: ease;
+        transition-duration: 0.7s;
+        transition-timing-function: ease;
+        transform-origin: center;
+
+
+        &__first {}
+
+        &__second {
+            display: block;
+            // transform-origin: 0 0;
+            transform: rotate(180deg);
+        }
+    }
+
+}
+
+.rotate {}
+
+.logo-is-active {
+    font-size: 3em;
+    -moz-transform: rotate(540deg);
+    -webkit-transform: rotate(540deg);
+    transform: rotate(540deg);
+    font-size: 2em;
+}

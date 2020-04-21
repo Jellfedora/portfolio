@@ -1,0 +1,18 @@
+@import 'base/variables',
+'base/reset',
+'base/base';
+
+@import 'animations/blink',
+'animations/fog';
+
+@import 'components/app',
+'components/home',
+'components/logo',
+'components/navigation',
+'components/header',
+// 'components/splashscreen',
+'components/images-viewer',
+'components/cv-download-modal',
+'components/portfolio',
+'components/skills'
+;

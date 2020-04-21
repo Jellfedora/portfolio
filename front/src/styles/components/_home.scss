@@ -1,0 +1,80 @@
+.home {
+    margin-right: 2.5em;
+    margin-left: 2.5em;
+
+    &__banner {
+        padding: 20vh 0;
+        height: 60vh;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: space-around;
+    }
+
+    &__julien-photo {
+        display: block;
+        margin: 0 auto 1.5em auto;
+        border-top-left-radius: 75px;
+        border-bottom-right-radius: 75px;
+        border: 2px solid $color-yellow;
+        height: 200px;
+        width: 200px;
+    }
+
+    &__logo {
+        display: block;
+        margin: auto;
+        height: 200px;
+        width: 200px;
+    }
+
+    &__logo-one {
+        display: block;
+        margin: auto;
+        height: 200px;
+        width: 200px;
+        -moz-transform: rotate(540deg);
+        -webkit-transform: rotate(540deg);
+        transform: rotate(540deg);
+    }
+
+    &__title,
+    &__baseline {
+        text-align: center;
+        font-weight: bold;
+    }
+
+    &__bio {
+        &__text {
+
+            &__intro,
+            &__school,
+            &__enterprise {
+                margin-bottom: 1em;
+            }
+        }
+    }
+
+
+    &__bio,
+    &__skills,
+    &__portfolio,
+    &__cv {
+        width: 100%;
+        margin-bottom: 2em;
+
+        &__title {
+            margin-bottom: 1em;
+            font-weight: bold;
+        }
+
+        &__text {
+            color: $color-yellow;
+            margin-bottom: 2em;
+        }
+    }
+
+    &__video {
+        height: 100vh;
+        width: 100%;
+    }
+}

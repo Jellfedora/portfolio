@@ -1,0 +1,37 @@
+.portfolio {
+    &__content {
+        margin: auto;
+
+
+        &__project {
+            color: $color-yellow;
+
+            &__title {
+                margin-bottom: 1em;
+            }
+
+            &__text {}
+
+            &__img {
+                height: 10em;
+                width: 17em;
+                display: block;
+                margin: 2em auto 0.5em auto;
+            }
+
+            &__link {
+                color: $color-yellow;
+                display: block;
+                margin: auto;
+                text-align: center;
+                font-size: 0.6em;
+            }
+        }
+    }
+
+    &__separator {
+        margin: 2em auto;
+        width: 80%;
+        border-bottom: 1px solid $color-yellow;
+    }
+}

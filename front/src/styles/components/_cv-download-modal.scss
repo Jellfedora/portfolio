@@ -1,0 +1,26 @@
+.cv-download-modal {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2em;
+
+    &__icon {
+        color: $color-yellow;
+        padding: 0.2em;
+        border: 1px solid $color-dark;
+        border-radius: 50px;
+        -moz-transition-duration: 0.5s;
+        -moz-transition-timing-function: ease;
+        -webkit-transition-duration: 0.5s;
+        -webkit-transition-timing-function: ease;
+        transition-duration: 0.5s;
+        transition-timing-function: ease;
+    }
+
+    &__icon:hover {
+
+        box-shadow: 0px 0px 10px $color-yellow;
+        -webkit-animation-name: clignote; //on affecte l'animation clignote à notre bouton
+        -webkit-animation-duration: 2s; //on définit la durée de l'animation à 1s
+        -webkit-animation-iteration-count: 2; //on dit que l'animation se répétera à l'infini.
+    }
+}
