@@ -1,55 +1,22 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import JulienCvImg from '../../ressources/images/cv-2020.jpg';
+import JulienCvPdf from '../../ressources/documents/cv-2020.pdf';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+import ReactGA from 'react-ga';
 class CvDownloadModal extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            imageIsFullScreen: false
-        };
 
-    }
-
-    componentDidMount() {
-        window.onscroll = () => {
-            if (window.scrollY) {
-                this.setState({ imageIsFullScreen: false });
-            }
-        };
-    }
-
-    componentDidUpdate() {
-    }
-
-    showFullScreen = () => {
-        console.log('test')
-        this.setState({ imageIsFullScreen: true });
-    }
-
-    hideFullScreen = () => {
-        this.setState({ imageIsFullScreen: false });
+    downloadCv = () => {
+        ReactGA.event({
+            category: "Download Cv",
+            action: "User download my cv",
+        });
     }
 
     render() {
-
         return (
-            <div className="cv-download-modal">
-                <a href={JulienCvImg} download="cv-lecointe-julien-2020"><FontAwesomeIcon icon="download" className="cv-download-modal__icon" /></a>
-                {/* <img className="home__cv__image" src={JulienCvImg} alt="Curriculum Vitae" onClick={this.showFullScreen} />
-                <img className={"home__cv__fullscreen-image " + (this.state.imageIsFullScreen ? 'imageIsFullScreen ' : '')} src={JulienCvImg} alt="Curriculum Vitae" onClick={this.hideFullScreen} /> */}
+            <div className="cv-download-modal ">
+                <a href={JulienCvPdf} download="cv-lecointe-julien-2020"><FontAwesomeIcon icon="download" className="cv-download-modal__icon blink" title="Mon cv au format pdf" onClick={this.downloadCv} /></a>
             </div>
         )
     }
 }
-const mapDispatchToProps = (dispatch) => {
-    return {
-        dispatch: (action) => { dispatch(action) }
-    }
-}
-const mapStateToProps = (state) => {
-    return {
-    }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(CvDownloadModal);
+export default (CvDownloadModal);

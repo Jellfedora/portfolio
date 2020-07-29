@@ -1,0 +1,27 @@
+.contact {
+
+
+    &__text {
+        color: $color-yellow;
+    }
+
+    &__item {
+        margin-top: 1em;
+        display: block;
+
+        & svg {
+            position: relative;
+            top: 0.3em;
+            height: 1.2em;
+        }
+
+        & a,
+        & span {
+            color: $color-yellow;
+            margin-left: 1em;
+            text-transform: lowercase;
+        }
+    }
+
+
+}
