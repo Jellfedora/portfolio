@@ -21,12 +21,12 @@
     }
 
     &:before {
-        background-image: url('../../ressources/images/fog-1.png');
+        background-image: url('../../ressources/images/fog1.png');
         animation: drift 60s linear 0s infinite;
     }
 
     &:after {
-        background-image: url('../../ressources/images/fog-2.png');
+        background-image: url('../../ressources/images/fog2.png');
         animation: drift 25s linear 0s infinite;
     }
 
@@ -39,4 +39,14 @@
             transform: translate3d(-200vw, 0, 0);
         }
     }
+}
+
+#bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    pointer-events: none;
 }
