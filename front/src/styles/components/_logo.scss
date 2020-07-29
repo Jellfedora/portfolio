@@ -1,6 +1,7 @@
 .logo {
     position: fixed;
     cursor: pointer;
+    z-index: 900;
 
     &__title {
         color: $color-yellow;
