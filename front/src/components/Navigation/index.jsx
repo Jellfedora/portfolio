@@ -1,169 +1,158 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from "react-scroll";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-scroll';
+import { Spring } from 'react-burgers';
 
 class Navigation extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            chargeBorder: false,
-            showLabels: false
+            chargeBorder: false
         };
     }
 
     componentDidMount() {
+        // Charge menu when mount
         this.chargeBorder();
+        // Close menu when user scroll
+        window.addEventListener('scroll', this.reinitializeElement);
 
-    }
-
-    componentDidUpdate() {
-        window.onscroll = () => {
-            if (window.scrollY) {
-                this.setState({ showLabels: false });
-            }
-        };
     }
 
     chargeBorder = () => {
         this.setState({ chargeBorder: true });
-        // setTimeout(this.showLabels, 2000);
     }
 
     showLabels = () => {
-        this.setState({ showLabels: true });
+        const action = { type: "SHOW_LABELS", value: true }
+        this.props.dispatch(action)
         setTimeout(this.reinitializeElement, 3000);
     }
 
     showLabelsWithoutTimeOut = () => {
-        if (this.state.showLabels === true) {
-            this.setState({ showLabels: false });
+        if (this.props.showLabels === true) {
+            const action = { type: "SHOW_LABELS", value: false }
+            this.props.dispatch(action)
         } else {
-            this.setState({ showLabels: true });
+            const action = { type: "SHOW_LABELS", value: true }
+            this.props.dispatch(action)
         }
     }
 
     reinitializeElement = () => {
-        this.setState({
-            // linkIsClicked: false,
-            // linkTwoIsClicked: false,
-            showLabels: false
-        });
+        const action = { type: "SHOW_LABELS", value: false }
+        this.props.dispatch(action)
+    }
+
+    changePage = (selectedPage) => {
+        const action = { type: "CHANGE_PAGE", value: selectedPage }
+        this.props.dispatch(action)
+
+        const action2 = { type: "SHOW_LABELS", value: false }
+        this.props.dispatch(action2)
     }
 
     render() {
 
         return (
             <div className="navigation">
-                <div className={" navigation__left " + (this.state.chargeBorder ? 'chargeBorderLeft ' : '') + (this.state.showLabels ? 'showLeftLabels slowBlink' : '')}>
-                    {/* <div className="navigation__left__links">
-                        <Link
-                            activeClass="blink"
-                            to="contact-title"
-                            spy={true}
-                            smooth={true}
-                            duration={800}
-                            className={"navigation__left__links__link"}
-                            onClick={this.animate}
-                        >
-                            <FontAwesomeIcon icon="at" className="navigation__left__icon" />
-                        </Link>
-                        <span className={"navigation__left__links__label "}>Contact</span>
-                    </div> */}
-                    <div className="navigation__left__links">
-                        <a href="https://www.linkedin.com/in/julien-lecointe/" className="navigation__left__links__link">
-                            <FontAwesomeIcon icon={['fab', 'linkedin']} className="navigation__left__icon" />
-                        </a>
-                        <span className={"navigation__left__links__label "}>Linkedin</span>
-                    </div>
-                    <div className="navigation__left__links">
-                        <a href="https://twitter.com/Jellfedora7" className="navigation__left__links__link">
-                            <FontAwesomeIcon icon={['fab', 'twitter']} className="navigation__left__icon" />
-                        </a>
-                        <span className={"navigation__left__links__label "}>Twitter</span>
-                    </div>
-                    <div className="navigation__left__links">
-                        <a href="https://github.com/Jellfedora" className="navigation__left__links__link">
-                            <FontAwesomeIcon icon={['fab', 'github']} className="navigation__left__icon" />
-                        </a>
-                        <span className={"navigation__left__links__label "}>Github</span>
-                    </div>
-                </div>
-                <div className={" navigation__right " + (this.state.chargeBorder ? 'chargeBorderRight ' : '') + (this.state.showLabels ? 'showRightLabels slowBlink' : '')}>
+                <div className={"navigation__right " + (this.state.chargeBorder ? 'chargeBorderRight ' : '') + (this.props.showLabels ? 'showRightLabels slowBlink' : '')}>
                     <div className="navigation__right__links">
                         <Link
+                            className={['navigation__right__links__link ' + (this.props.selectedPage === 1 ? 'blink' : '')]}
+                            onClick={() => {
+                                if (this.props.deviceIsLarge) {
+                                    this.changePage(1)
+                                }
+                            }}
+                            to='bio-title'
+                            spy={this.props.deviceIsLarge !== true ? true : false}
+                            smooth={this.props.deviceIsLarge !== true ? true : false}
                             activeClass="blink"
-                            to="bio-title"
-                            spy={true}
-                            smooth={true}
-                            duration={800}
-                            className={"navigation__right__links__link"}
-                            onClick={this.animate}
                         >
                             <FontAwesomeIcon icon="user-tie" className="navigation__right__icon" />
+                            <span className={"navigation__right__links__label "}>Parcours</span>
                         </Link>
-                        <span className={"navigation__right__links__label "}>Parcours</span>
                     </div>
                     <div className="navigation__right__links">
                         <Link
+                            className={['navigation__right__links__link ' + (this.props.selectedPage === 2 ? 'blink' : '')]}
+                            onClick={() => {
+                                if (this.props.deviceIsLarge) {
+                                    this.changePage(2)
+                                }
+                            }}
+                            to='skills-title'
+                            spy={this.props.deviceIsLarge !== true ? true : false}
+                            smooth={this.props.deviceIsLarge !== true ? true : false}
                             activeClass="blink"
-                            to="skills-title"
-                            spy={true}
-                            smooth={true}
-                            duration={800}
-                            className={"navigation__right__links__link"}
-                            onClick={this.animate}
                         >
                             <FontAwesomeIcon icon="book-open" className="navigation__right__icon" />
+                            <span className={"navigation__right__links__label "}>Compétences</span>
                         </Link>
-                        <span className={"navigation__right__links__label "}>Skills</span>
                     </div>
                     <div className="navigation__right__links">
                         <Link
+                            className={['navigation__right__links__link ' + (this.props.selectedPage === 3 ? 'blink' : '')]}
+                            onClick={() => {
+                                if (this.props.deviceIsLarge) {
+                                    this.changePage(3)
+                                }
+                            }}
+                            to='portfolio-title'
+                            spy={this.props.deviceIsLarge !== true ? true : false}
+                            smooth={this.props.deviceIsLarge !== true ? true : false}
                             activeClass="blink"
-                            to="portfolio-title"
-                            spy={true}
-                            smooth={true}
-                            duration={800}
-                            className={"navigation__right__links__link"}
-                            onClick={this.animateStepTwo}
                         >
                             <FontAwesomeIcon icon="briefcase" className="navigation__right__icon" />
+                            <span className={"navigation__right__links__label "}>Portfolio</span>
                         </Link>
-                        <span className={"navigation__right__links__label "}>Portfolio</span>
                     </div>
                     <div className="navigation__right__links">
                         <Link
+                            className={['navigation__right__links__link ' + (this.props.selectedPage === 4 ? 'blink' : '')]}
+                            onClick={() => {
+                                if (this.props.deviceIsLarge) {
+                                    this.changePage(4)
+                                }
+                            }}
+                            to='cv-title'
+                            spy={this.props.deviceIsLarge !== true ? true : false}
+                            smooth={this.props.deviceIsLarge !== true ? true : false}
                             activeClass="blink"
-                            to="cv-title"
-                            spy={true}
-                            smooth={true}
-                            duration={800}
-                            className={"navigation__right__links__link"}
-                            onClick={this.animateStepTwo}
                         >
                             <FontAwesomeIcon icon="file-pdf" className="navigation__right__icon" />
+                            <span className={"navigation__right__links__label "}>Cv</span>
                         </Link>
-                        <span className={"navigation__right__links__label "}>Cv</span>
                     </div>
                     <div className="navigation__right__links">
                         <Link
+                            className={['navigation__right__links__link ' + (this.props.selectedPage === 5 ? 'blink' : '')]}
+                            onClick={() => {
+                                if (this.props.deviceIsLarge) {
+                                    this.changePage(5)
+                                }
+                            }}
+                            to='contact-title'
+                            spy={this.props.deviceIsLarge !== true ? true : false}
+                            smooth={this.props.deviceIsLarge !== true ? true : false}
                             activeClass="blink"
-                            to="contact-title"
-                            spy={true}
-                            smooth={true}
-                            duration={800}
-                            className={"navigation__right__links__link"}
-                            onClick={this.animate}
+
                         >
                             <FontAwesomeIcon icon="at" className="navigation__right__icon" />
+                            <span className={"navigation__right__links__label "}>Contact</span>
                         </Link>
-                        <span className={"navigation__right__links__label "}>Contact</span>
                     </div>
                 </div>
-                <button className={"navigation__show-button " + (this.state.showLabels ? 'blink ' : 'buttonIsNotFocus')} onClick={this.showLabelsWithoutTimeOut}>
-                    <FontAwesomeIcon icon="bars" className="navigation__left__icon" />
-                </button>
+                <Spring
+                    active={this.props.showLabels}
+                    color={'#dfbe8d'}
+                    width={20}
+                    lineSpacing={5}
+                    lineHeight={2}
+                    className={"navigation__show-button " + (this.props.showLabels ? 'blink ' : 'buttonIsNotFocus')}
+                    onClick={this.showLabelsWithoutTimeOut} />
             </div>
         );
     }
@@ -175,6 +164,9 @@ const mapDispatchToProps = (dispatch) => {
 }
 const mapStateToProps = (state) => {
     return {
+        selectedPage: state.navigation.blinkPage,
+        showLabels: state.navigation.showLabels,
+        deviceIsLarge: state.navigation.deviceIsLarge,
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Navigation);
